@@ -1,1 +1,12 @@
-console.log('SERVER WORKING...')
+const express = require('express'); 
+const dotenv = require('dotenv').config(); 
+
+const PORT = process.env.PORT || 5000;
+
+const app = express();
+
+app.get('/', (req, res) => {
+   res.status(200).json({massage: 'Wellcome to Support Dest API!'});
+})
+
+app.listen(PORT, () => console.log(`SERVER IS WORKING ON PORT: ${PORT}`));
