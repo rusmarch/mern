@@ -15,7 +15,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
    //Find if user already exists
    const userExist = await User.findOne({ email });
-
+   f
    if (userExist) {
       res.status(400)
       throw new Error('User already exists')
@@ -46,10 +46,10 @@ const registerUser = asyncHandler(async (req, res) => {
 })
 
 const loginUser = asyncHandler(async (req, res) => {
-   
-   const {email, password} = req.body;
 
-   const user = await User.findOne({email});
+   const { email, password } = req.body;
+
+   const user = await User.findOne({ email });
 
    // Check user and passwords match
    if (user && (await bcrypt.compare(password, user.password))) {
@@ -58,12 +58,25 @@ const loginUser = asyncHandler(async (req, res) => {
          name: user.name,
          email: user.email,
          token: generateToken(user._id)
-      })    
+      })
    } else {
       res.status(401);
       throw new Error('Invalid email or password');
    }
 })
+
+// Get current user | /api/users/me | private
+const getMe = asyncHandler(async (req, res) => {
+
+   const user = {
+      id: req.user._id,
+      email: req.user.email,
+      name: req.user.name
+   }
+   res.status(200).json(user);
+})
+
+
 
 // Generate token 
 const generateToken = (id) => {
@@ -74,5 +87,6 @@ const generateToken = (id) => {
 
 module.exports = {
    registerUser,
-   loginUser
+   loginUser,
+   getMe
 }
