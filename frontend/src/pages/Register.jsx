@@ -1,6 +1,14 @@
 import { useState } from "react"
 import { FaUser } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+   register,
+   selectUser,
+   selectIsSuccess,
+   selectIsLoading,
+   selectMessage
+} from "../features/auth/authService";
 
 export const Register = () => {
 
@@ -12,6 +20,9 @@ export const Register = () => {
    })
 
    const { name, email, password, password2 } = formData;
+
+   const user = useSelector(selectUser);
+   const dispatch = useDispatch();
 
    const onChange = (e) => {
       setFormData((prev) => ({
@@ -30,7 +41,7 @@ export const Register = () => {
    return (
       <>
          <section className="heading">
-            <h1><FaUser />Register</h1>
+            <h1><FaUser />Register {user} </h1>
             <p>Please create an accont</p>
          </section>
          <section className="form">
