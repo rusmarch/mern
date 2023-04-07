@@ -9,9 +9,18 @@ const initialState = {
 }
 
 export const register = createAsyncThunk(
-   'auth/register', async (user, thunkAPI) => {
-      console.log(user);
+   'auth/register',
+    async (user, thunkAPI) => {
+      console.table(user);
    })
+
+   export const login = createAsyncThunk(
+   'auth/login',
+    async (user, thunkAPI) => {
+      console.table(user);
+   })
+
+
 
 export const authSlice = createSlice({
    name: 'auth',
@@ -25,11 +34,11 @@ export const authSlice = createSlice({
 })
 
 
-export const selectUser = (state) => state.auth.user;
-export const selectIsError = (state) => state.auth.isError; 
-export const selectIsSuccess = (state) => state.auth.isSuccess;
-export const selectIsLoading = (state) => state.auth.isLoading;
-export const selectMessage = (state) => state.auth.message;
+// export const selectUser = (state) => state.auth.user;
+// export const selectIsError = (state) => state.auth.isError; 
+// export const selectIsSuccess = (state) => state.auth.isSuccess;
+// export const selectIsLoading = (state) => state.auth.isLoading;
+// export const selectMessage = (state) => state.auth.message;
 
 export default authSlice.reducer;
 

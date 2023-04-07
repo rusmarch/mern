@@ -4,11 +4,7 @@ import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import {
    register,
-   selectUser,
-   selectIsSuccess,
-   selectIsLoading,
-   selectMessage
-} from "../features/auth/authService";
+} from "../features/auth/authSlice";
 
 export const Register = () => {
 
@@ -21,7 +17,10 @@ export const Register = () => {
 
    const { name, email, password, password2 } = formData;
 
-   const user = useSelector(selectUser);
+   const user = useSelector(state => state.auth.user);
+   const isLoading = useSelector(state => state.auth.isLoading);
+   const isSuccess = useSelector(state => state.auth.isSuccess);
+   const message = useSelector(state => state.auth.message);
    const dispatch = useDispatch();
 
    const onChange = (e) => {
@@ -35,13 +34,21 @@ export const Register = () => {
       e.preventDefault();
       if (password !== password2) {
          toast.error('Passwords do not match');
+      } else {
+         const userData = {
+            name,
+            email,
+            password,
+         }
+         dispatch(register(userData));
       }
    }
+
 
    return (
       <>
          <section className="heading">
-            <h1><FaUser />Register {user} </h1>
+            <h1><FaUser />Register {user}</h1>
             <p>Please create an accont</p>
          </section>
          <section className="form">
