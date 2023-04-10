@@ -1,7 +1,14 @@
 import { useState } from "react"
 import { FaSignInAlt } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
-import { login } from "../features/auth/authSlice";
+import { useSelector, useDispatch } from 'react-redux';
+import { 
+   selectUser,
+   selectIsLoading,
+   selectIsError,
+   selectMessage, 
+   login
+ } from '../features/auth/authSlice';
+
 
 export const Login = () => {
 
@@ -37,7 +44,6 @@ export const Login = () => {
       dispatch(login(userData));
    }
 
-   
    return (
       <>
          <section className="heading">
