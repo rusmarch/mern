@@ -3,15 +3,15 @@ import { FaUser } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { 
+import {
    selectUser,
    selectIsLoading,
    selectIsError,
-   selectMessage, 
+   selectMessage,
    selectIsSuccess,
    register,
    reset,
- } from '../features/auth/authSlice';
+} from '../features/auth/authSlice';
 
 export const Register = () => {
 
@@ -87,7 +87,7 @@ export const Register = () => {
                      value={name}
                      onChange={onChange}
                   />
-;               </div>
+               </div>
                <div className="form-group">
                   <input
                      className="form-control"
