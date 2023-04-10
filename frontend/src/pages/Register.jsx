@@ -61,7 +61,7 @@ export const Register = () => {
                      value={name}
                      onChange={onChange}
                   />
-               </div>
+;               </div>
                <div className="form-group">
                   <input
                      className="form-control"
