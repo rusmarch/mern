@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import {
    register,
-   reset
+   reset,
 } from "../features/auth/authSlice";
 
 export const Register = () => {
