@@ -2,13 +2,7 @@ import { useState } from "react"
 import { FaUser } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
-import { 
-   selectUser,
-   selectIsLoading,
-   selectIsError,
-   selectMessage, 
-   register
- } from '../features/auth/authSlice'
+
 
 export const Register = () => {
 
@@ -19,11 +13,6 @@ export const Register = () => {
       password2: ''
    })
 
-   const user = useSelector(selectUser);
-   const isLoading = useSelector(selectIsLoading);
-   const isError = useSelector(selectIsError);
-   const message = useSelector(selectMessage);
-   const dispatch = useDispatch();
 
    const { name, email, password, password2 } = formData;
 
