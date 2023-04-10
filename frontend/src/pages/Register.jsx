@@ -1,6 +1,15 @@
 import { useState } from "react"
 import { FaUser } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux';
+import { 
+   selectUser,
+   selectUser2,
+   selectIsLoading,
+   selectIsError,
+   selectMessage, 
+   register
+ } from '../features/auth/authSlice'
 
 export const Register = () => {
 
@@ -10,6 +19,13 @@ export const Register = () => {
       password: '',
       password2: ''
    })
+
+   //const user = useSelector(selectUser);
+   const user2 = useSelector(state => state.auth.user);
+   const isLoading = useSelector(selectIsLoading);
+   const isError = useSelector(selectIsError);
+   const message = useSelector(selectMessage);
+   const dispatch = useDispatch();
 
    const { name, email, password, password2 } = formData;
 
@@ -27,11 +43,13 @@ export const Register = () => {
       }
    }
 
+   console.log(message);
+
    return (
       <>
          <section className="heading">
             <h1><FaUser />Register</h1>
-            <p>Please create an accont</p>
+            <p>{user2}, Please create an account</p>
          </section>
          <section className="form">
             <form onSubmit={onSubmit}>
