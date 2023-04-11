@@ -9,7 +9,7 @@ import {
    selectIsError,
    selectMessage,
    selectIsSuccess,
-   register,
+   registerUser,
    reset,
 } from '../features/auth/authSlice';
 
@@ -63,7 +63,7 @@ export const Register = () => {
             email,
             password
          }
-         dispatch(register(userData))
+         dispatch(registerUser(userData))
       }
    }
 

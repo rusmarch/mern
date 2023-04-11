@@ -12,7 +12,7 @@ const initialState = {
    message: ''
 }
 
-export const register = createAsyncThunk(
+export const registerUser = createAsyncThunk(
    'auth/register',
    async (user, thunkAPI) => {
       try {
@@ -47,16 +47,16 @@ export const authSlice = createSlice({
    },
    extraReducers: (builder) => {
       builder
-         .addCase(register.pending, (state) => {
+         .addCase(registerUser.pending, (state) => {
             state.isLoading = true;
          })
-         .addCase(register.fulfilled, (state, action) => {
+         .addCase(registerUser.fulfilled, (state, action) => {
             state.isLoading = false;
             state.isSuccess = true;
             state.user = action.payload;
             console.log(action.payload)
          })
-         .addCase(register.rejected, (state, action) => {
+         .addCase(registerUser.rejected, (state, action) => {
             state.isLoading = false;
             state.isError = true;
             state.message = action.payload;
