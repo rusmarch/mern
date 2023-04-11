@@ -1,13 +1,7 @@
 import { useState } from "react"
 import { FaSignInAlt } from "react-icons/fa";
+import { login } from "../features/auth/authSlice";
 import { useSelector, useDispatch } from 'react-redux';
-import { 
-   selectUser,
-   selectIsLoading,
-   selectIsError,
-   selectMessage, 
-   login
- } from '../features/auth/authSlice';
 
 
 export const Login = () => {
@@ -17,12 +11,6 @@ export const Login = () => {
       password: '',
    })
 
-
-   const user = useSelector(state => state.auth.user);
-   const isLogin = useSelector(state => state.auth.isLogin);
-   const isSuccess = useSelector(state => state.auth.isSuccess);
-   const message = useSelector(state => state.auth.message);
-   
    const dispatch = useDispatch();
 
    const { email, password } = formData;
@@ -36,6 +24,7 @@ export const Login = () => {
 
    const onSubmit = (e) => {
       e.preventDefault();
+      
       const userData = {
          email,
          password
@@ -43,6 +32,7 @@ export const Login = () => {
 
       dispatch(login(userData));
    }
+
 
    return (
       <>

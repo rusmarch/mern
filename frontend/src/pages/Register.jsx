@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
    selectUser,
-   selectIsLoading,
    selectIsError,
-   selectMessage,
+   selectIsLoading,
    selectIsSuccess,
-   registerUser,
-   reset,
+   selectMessage,
+   register,
+   reset
 } from '../features/auth/authSlice';
 
 export const Register = () => {
@@ -23,9 +23,9 @@ export const Register = () => {
    })
 
    const user = useSelector(selectUser);
+   const isError = useSelector(selectIsError);
    const isLoading = useSelector(selectIsLoading);
    const isSuccess = useSelector(selectIsSuccess);
-   const isError = useSelector(selectIsError);
    const message = useSelector(selectMessage);
    const dispatch = useDispatch();
    const navigate = useNavigate();
@@ -63,7 +63,8 @@ export const Register = () => {
             email,
             password
          }
-         dispatch(registerUser(userData))
+
+         dispatch(register(userData));
       }
    }
 
