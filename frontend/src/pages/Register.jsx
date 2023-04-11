@@ -1,6 +1,17 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FaUser } from "react-icons/fa";
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+   selectUser,
+   selectIsError,
+   selectIsLoading,
+   selectIsSuccess,
+   selelctMessage, 
+   register,
+   reset
+} from '../features/auth/authSlice';
 
 export const Register = () => {
 
@@ -10,6 +21,27 @@ export const Register = () => {
       password: '',
       password2: ''
    })
+
+
+   const user = useSelector(selectUser);
+   const isError = useSelector(selectIsError);
+   const isLoading = useSelector(selectIsLoading);
+   const isSuccess = useSelector(selectIsSuccess);
+   const message = useSelector(selelctMessage);
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+
+   useEffect(() => {
+      if (isError) {
+         toast.error(message);
+      }
+
+      if (isSuccess || user) {
+         navigate('/');
+      }
+
+      dispatch(reset());
+   }, [isError, message, isSuccess, user, navigate, dispatch])
 
    const { name, email, password, password2 } = formData;
 
@@ -24,8 +56,17 @@ export const Register = () => {
       e.preventDefault();
       if (password !== password2) {
          toast.error('Passwords do not match');
+      } else {
+         const userData = {
+            name,
+            email,
+            password
+         }
+
+         dispatch(register(userData));
       }
    }
+
 
    return (
       <>
