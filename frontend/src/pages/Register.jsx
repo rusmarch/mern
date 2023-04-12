@@ -12,6 +12,8 @@ import {
    register,
    reset
 } from '../features/auth/authSlice';
+import { Spinner } from "../components/Spinner";
+
 
 export const Register = () => {
 
@@ -68,6 +70,9 @@ export const Register = () => {
       }
    }
 
+   if (isLoading) {
+      return <Spinner/>
+   }
 
    return (
       <>
