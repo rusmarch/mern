@@ -4,11 +4,6 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-   selectUser,
-   selectIsError,
-   selectIsLoading,
-   selectIsSuccess,
-   selectMessage,
    register,
    reset
 } from '../features/auth/authSlice';
@@ -24,11 +19,11 @@ export const Register = () => {
       password2: ''
    })
 
-   const user = useSelector(selectUser);
-   const isError = useSelector(selectIsError);
-   const isLoading = useSelector(selectIsLoading);
-   const isSuccess = useSelector(selectIsSuccess);
-   const message = useSelector(selectMessage);
+   const user = useSelector(state => state.auth.user);
+   const isError = useSelector(state => state.auth.isError);
+   const isLoading = useSelector(state => state.auth.isLoading);
+   const isSuccess = useSelector(state => state.auth.isSuccess);
+   const message = useSelector(state => state.auth.message);
    const dispatch = useDispatch();
    const navigate = useNavigate();
 

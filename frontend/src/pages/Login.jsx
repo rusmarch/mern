@@ -3,11 +3,6 @@ import { FaSignInAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import {
-   selectUser,
-   selectIsError,
-   selectIsLoading,
-   selectIsSuccess,
-   selectMessage,
    reset,
    login
 } from '../features/auth/authSlice';
@@ -21,11 +16,11 @@ export const Login = () => {
       password: '',
    })
 
-   const user = useSelector(selectUser);
-   const isError = useSelector(selectIsError);
-   const isLoading = useSelector(selectIsLoading);
-   const isSuccess = useSelector(selectIsSuccess);
-   const message = useSelector(selectMessage);
+   const user = useSelector(state => state.auth.user);
+   const isError = useSelector(state => state.auth.isError);
+   const isLoading = useSelector(state => state.auth.isLoading);
+   const isSuccess = useSelector(state => state.auth.isSuccess);
+   const message = useSelector(state => state.auth.message);
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
