@@ -16,7 +16,6 @@ export const NewTicket = () => {
 
    }
 
-   console.log(user)
 
    return (
       <>
