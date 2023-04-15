@@ -47,7 +47,6 @@ const createTicket = asyncHandler(async (req, res) => {
 
 // Get ticket | GET /api/tickets/:id | private
 const getOneTicket = asyncHandler(async (req, res) => {
-   console.log(req);
    // Get user using the id in JWT
    const user = await User.findById(req.user.id);
 

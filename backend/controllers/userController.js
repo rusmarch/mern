@@ -6,7 +6,7 @@ const User = require('../models/userModel');
 const registerUser = asyncHandler(async (req, res) => {
    const { name, email, password } = req.body;
 
-   //    Validation
+   //    Validatiгла
    if (!name || !email || !password) {
       res.status(400);
       throw new Error('Please include all fields!');
@@ -62,8 +62,6 @@ const loginUser = asyncHandler(async (req, res) => {
       res.status(401);
       throw new Error('Invalid email or password');
    }
-
-   res.status(200).json(user);
 })
 
 // Get current user | /api/users/me | private
@@ -87,7 +85,7 @@ const generateToken = (id) => {
 }
 
 module.exports = {
-   registerUser,
+   registerUser, 
    loginUser,
    getMe
 }

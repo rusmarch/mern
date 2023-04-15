@@ -3,6 +3,7 @@ import { authService } from './authService';
 
 const user = JSON.parse(localStorage.getItem('user'));
 
+
 const initialState = {
    user: user ? user : null,
    isError: false,
@@ -34,6 +35,9 @@ export const login = createAsyncThunk(
    'auth/login',
    async (user, thunkAPI) => {
       try {
+         // const loggedUser = await authService.loginUser(user);
+         // localStorage.setItem('user', JSON.stringify(loggedUser));
+         // return loggedUser;
          return await authService.loginUser(user);
       } catch (error) {
          const message = (
@@ -103,3 +107,5 @@ export const authSlice = createSlice({
 export const { reset } = authSlice.actions;
 
 export const { reducer: authReducer } = authSlice;
+
+
