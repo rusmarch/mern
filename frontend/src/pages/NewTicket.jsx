@@ -9,10 +9,10 @@ import { BackButton } from '../components/BackButton';
 export const NewTicket = () => {
 
    const user = useSelector(state => state.auth.user);
-   const isLoading = useSelector(state => state.ticket.isLoading);
-   const isError = useSelector(state => state.ticket.isError);
-   const isSuccess = useSelector(state => state.ticket.isSuccess);
-   const message = useSelector(state => state.ticket.message);
+   const isLoading = useSelector(state => state.tickets.isLoading);
+   const isError = useSelector(state => state.tickets.isError);
+   const isSuccess = useSelector(state => state.tickets.isSuccess);
+   const message = useSelector(state => state.tickets.message);
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
