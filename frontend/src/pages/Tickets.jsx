@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { reset, getTickets } from '../features/tickets/ticketSlice';
 import { Spinner } from '../components/Spinner';
